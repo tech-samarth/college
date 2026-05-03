@@ -1,0 +1,519 @@
+Here is a complete courses page for NIT Durgapur with detailed program information, eligibility, duration, and curriculum highlights.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Courses | NIT Durgapur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(2, 20, 35, 0.96);
+            backdrop-filter: blur(12px);
+            padding: 1rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 55px;
+            border-radius: 50%;
+            background: white;
+            padding: 4px;
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #fbbf24;
+        }
+
+        .menu-icon {
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Hero Section */
+        .courses-hero {
+            background: linear-gradient(125deg, #0a2a3e, #0f3b4f);
+            padding: 3rem 6%;
+            text-align: center;
+            color: white;
+        }
+
+        .courses-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .courses-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 6%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #0f2b3d;
+            border-left: 5px solid #fbbf24;
+            padding-left: 1.2rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #eef2ff;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+            border-color: #fbbf24;
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, #1e3a5f, #0f2b3d);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .course-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-header .duration {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .spec-badge {
+            background: #eef2ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+
+        .course-body p {
+            color: #334155;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .specializations {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .specializations h4 {
+            font-size: 0.9rem;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .specializations ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            list-style: none;
+        }
+
+        .specializations li {
+            background: white;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .fee-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .fee-amount {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #1e3a5f;
+        }
+
+        .apply-link {
+            background: #fbbf24;
+            color: #0f172a;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .apply-link:hover {
+            background: #ffd966;
+            transform: scale(1.02);
+        }
+
+        /* highlight info */
+        .info-bar {
+            background: #e6f0fa;
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* footer */
+        .footer {
+            background: #0a1c2a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #0f2b3d;
+                padding: 1rem;
+                border-radius: 20px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .courses-hero h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 2rem 5%;
+            }
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="logo-area">
+            <img src="image/logo.png" class="logo-img" alt="NIT Durgapur">
+            <span class="logo-text">NIT Durgapur</span>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admission.html">Admission</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+            <li><a href="fees.html">Fees</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="courses-hero">
+        <h1>📚 Programs Offered</h1>
+        <p>Explore world-class undergraduate, postgraduate, and doctoral programs at NIT Durgapur — designed to shape future leaders, innovators, and researchers.</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">🎓 Undergraduate Programs</h2>
+        <div class="course-grid">
+            <!-- B.Tech Card -->
+            <div class="course-card fade-up">
+                <div class="course-header">
+                    <h2>B.Tech</h2>
+                    <div class="duration"><i class="fas fa-calendar-alt"></i> Duration: 4 Years (8 Semesters)</div>
+                </div>
+                <div class="course-body">
+                    <div class="course-specs">
+                        <span class="spec-badge"><i class="fas fa-users"></i> Intake: 780+ seats</span>
+                        <span class="spec-badge"><i class="fas fa-trophy"></i> AICTE Approved</span>
+                    </div>
+                    <p>Bachelor of Technology (B.Tech) is a premier engineering program offering deep technical knowledge, hands-on projects, and industry internships. Curriculum aligned with NEP 2020.</p>
+                    <div class="specializations">
+                        <h4><i class="fas fa-microchip"></i> Specializations</h4>
+                        <ul>
+                            <li>Computer Science & Engg.</li>
+                            <li>Electronics & Comm.</li>
+                            <li>Mechanical Engg.</li>
+                            <li>Civil Engg.</li>
+                            <li>Electrical Engg.</li>
+                            <li>Biotechnology</li>
+                            <li>Metallurgical Engg.</li>
+                        </ul>
+                    </div>
+                    <div class="fee-info">
+                        <span><i class="fas fa-rupee-sign"></i> Annual Fee: </span>
+                        <span class="fee-amount">₹ 1,18,000</span>
+                        <a href="admission.html" class="apply-link">Apply Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: #f1f5f9; border-radius: 48px; margin: 0 6% 2rem;">
+        <h2 class="section-title">📖 Postgraduate Programs</h2>
+        <div class="course-grid">
+            <!-- M.Tech Card -->
+            <div class="course-card fade-up">
+                <div class="course-header" style="background: linear-gradient(135deg, #2d4a6e, #1e3a5f);">
+                    <h2>M.Tech</h2>
+                    <div class="duration"><i class="fas fa-calendar-alt"></i> Duration: 2 Years</div>
+                </div>
+                <div class="course-body">
+                    <div class="course-specs">
+                        <span class="spec-badge">Full Time</span>
+                        <span class="spec-badge">Research Oriented</span>
+                    </div>
+                    <p>Master of Technology program focuses on advanced engineering concepts, research, and industry-driven projects. It prepares students for leadership roles in R&D and academia.</p>
+                    <div class="specializations">
+                        <h4><i class="fas fa-flask"></i> Majors</h4>
+                        <ul>
+                            <li>AI & Machine Learning</li>
+                            <li>VLSI Design</li>
+                            <li>Structural Engg.</li>
+                            <li>Thermal Engineering</li>
+                            <li>Power Systems</li>
+                            <li>Robotics</li>
+                        </ul>
+                    </div>
+                    <div class="fee-info">
+                        <span><i class="fas fa-rupee-sign"></i> Total Fee: </span>
+                        <span class="fee-amount">₹ 1,64,000</span>
+                        <a href="admission.html" class="apply-link">Apply Now →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MBA Card -->
+            <div class="course-card fade-up">
+                <div class="course-header" style="background: linear-gradient(135deg, #2d4a6e, #1e3a5f);">
+                    <h2>MBA</h2>
+                    <div class="duration"><i class="fas fa-calendar-alt"></i> Duration: 2 Years (Full Time)</div>
+                </div>
+                <div class="course-body">
+                    <div class="course-specs">
+                        <span class="spec-badge">AACSB Guidelines</span>
+                        <span class="spec-badge">Industry Immersion</span>
+                    </div>
+                    <p>Master of Business Administration with dual specialization options. Focus on leadership, analytics, strategy, and managerial excellence. Summer internships and live projects.</p>
+                    <div class="specializations">
+                        <h4><i class="fas fa-chart-line"></i> Specializations</h4>
+                        <ul>
+                            <li>Marketing</li>
+                            <li>Finance</li>
+                            <li>Business Analytics</li>
+                            <li>Operations</li>
+                            <li>HR</li>
+                        </ul>
+                    </div>
+                    <div class="fee-info">
+                        <span><i class="fas fa-rupee-sign"></i> Total Fee: </span>
+                        <span class="fee-amount">₹ 2,90,000</span>
+                        <a href="admission.html" class="apply-link">Apply Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">🔬 Doctoral & Integrated Programs</h2>
+        <div class="course-grid">
+            <div class="course-card fade-up">
+                <div class="course-header" style="background: linear-gradient(135deg, #0f3448, #0a2a3a);">
+                    <h2>Ph.D.</h2>
+                    <div class="duration"><i class="fas fa-flask"></i> Doctorate Programs</div>
+                </div>
+                <div class="course-body">
+                    <p>Research opportunities in Engineering, Sciences, Humanities, and Management. Fellowship available for full-time scholars.</p>
+                    <div class="specializations">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Data Science</li>
+                            <li>Renewable Energy</li>
+                            <li>Nanotechnology</li>
+                            <li>AI & Robotics</li>
+                            <li>Economics</li>
+                        </ul>
+                    </div>
+                    <div class="fee-info">
+                        <span><i class="fas fa-rupee-sign"></i> Yearly: </span>
+                        <span class="fee-amount">₹ 45,000</span>
+                        <a href="admission.html" class="apply-link">Research Portal →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card fade-up">
+                <div class="course-header" style="background: linear-gradient(135deg, #0f3448, #0a2a3a);">
+                    <h2>M.Sc. / Integrated</h2>
+                    <div class="duration"><i class="fas fa-calendar-alt"></i> 5 Years Integrated</div>
+                </div>
+                <div class="course-body">
+                    <p>Integrated M.Sc. in Pure Sciences & Interdisciplinary courses. Excellent research foundation and career pathways.</p>
+                    <div class="specializations">
+                        <h4>Disciplines</h4>
+                        <ul>
+                            <li>Physics</li>
+                            <li>Chemistry</li>
+                            <li>Mathematics</li>
+                            <li>Environmental Science</li>
+                        </ul>
+                    </div>
+                    <div class="fee-info">
+                        <span><i class="fas fa-rupee-sign"></i> Per Sem: </span>
+                        <span class="fee-amount">₹ 42,000</span>
+                        <a href="admission.html" class="apply-link">Enroll →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-bar fade-up">
+            <i class="fas fa-info-circle" style="font-size: 1.8rem; color: #fbbf24;"></i>
+            <h3 style="margin: 0.5rem 0;">Eligibility & Admission Criteria</h3>
+            <p><strong>B.Tech:</strong> JEE Main qualified + JoSAA Counseling | <strong>M.Tech:</strong> GATE score + CCMT | <strong>MBA:</strong> CAT/MAT/CMAT + GD/PI | <strong>Ph.D.:</strong> UGC-NET/GATE or written test + interview.</p>
+            <a href="admission.html" style="display: inline-block; margin-top: 12px; color: #1e3a5f; font-weight: bold;">View Admission Brochure →</a>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>📍 National Institute of Technology Durgapur, Mahatma Gandhi Avenue, Durgapur - 713209, West Bengal, India</p>
+        <p>📞 +91-343-2752000 | ✉️ admissions@nitdgp.ac.in | 📧 hod_academic@nitdgp.ac.in</p>
+        <p id="copyright">© 2025 NIT Durgapur | All Rights Reserved</p>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+        }
+
+        // Close menu when clicking on link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('show');
+            });
+        });
+
+        // scroll fade animation
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // dynamic copyright year
+        document.getElementById('copyright').innerHTML = `© ${new Date().getFullYear()} NIT Durgapur | All Rights Reserved`;
+    </script>
+</body>
+</html>
+```

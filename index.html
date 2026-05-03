@@ -1,147 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description" content="The Gokul Global University at Sidhpur provide one of the earliest form of technical studies, which has been vital in setting up the standard of brilliance.">
-    <meta name="keywords" content="Gokul Global University,Collage">
-    <meta name="author" content="Jaydipsinh Solanki">
-
-    <title>Gokul Global University</title>
-    
-    <link rel="stylesheet" href="css/main_style.css">
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NIT Durgapur | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
+        /* Global Nav */
+        .main-nav {
+            background: rgba(2, 20, 35, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 1rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            width: 55px;
+            border-radius: 50%;
+            background: white;
+            padding: 4px;
+        }
+        .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #fbbf24;
+        }
+        .menu-icon {
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 85vh;
+            background: linear-gradient(125deg, rgba(3, 30, 50, 0.9), rgba(6, 52, 88, 0.85)), url('image/background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+        .hero-btn {
+            background: #fbbf24;
+            color: #0f172a;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1.5rem;
+            transition: 0.3s;
+        }
+        /* sections */
+        section {
+            padding: 4rem 6%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #0f2b3d;
+        }
+        .grid-3 {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+            transition: 0.2s;
+            text-align: center;
+        }
+        .card i {
+            font-size: 2.5rem;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+        .campus-grid {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+        .campus-item {
+            flex: 1;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .campus-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .overlay {
+            background: linear-gradient(to top, #000000b3, transparent);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 1rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .footer {
+            background: #0a1c2a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem;
+        }
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #0f2b3d;
+                padding: 1rem;
+                border-radius: 20px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="image/logo.png" id="logo-img"></a>
+    <nav class="main-nav">
+        <div class="logo-area">
+            <img src="image/logo.png" class="logo-img" alt="NITDGP">
+            <span class="logo-text">NIT Durgapur</span>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="admission.html">Admission</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="fees.html">Fees</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-            <div class="nav-links" id="navLinks">
-
-                <span class="icon" onclick="hidemenu()">&#10005;</span>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Admission_page.html">Admission</a></li>
-                    <li><a href="#course_call">Course</a></li>
-                    <li><a href="fees_page.html">Fees</a></li>
-                    <li><a href="Contact_page.html">Contact</a></li>
-                </ul>
-            </div> 
-            <span class="icon" onclick="showmenu()">&#9776;</span>
-        </nav>
-       
-        <div class="text-box">
-            <h1>Gokul BCA College</h1>
-            <p>The Gokul Global University at Sidhpur provide one of the earliest form of technical studies,<br>which has been vital in setting up the standard of brilliance.</p>
-            
-            <a href="Admission_page.html" class="hero-btn">Admission Open</a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>National Institute of Technology Durgapur</h1>
+            <p>Excellence in Engineering, Technology & Management | Est. 1960</p>
+            <a href="admission.html" class="hero-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <!--Course of Collage-->
-
-
-    <section class="course" id="course_call">
-        <h1>Course We Offer</h1>
-        <p>We are offer to three best computer science course for student by Gokul Global University</p>
-
-        <div class="row">
-            <div class="course-col">
-                <h2>BCA</h2>
-                <p>The BCA course is a full time three years (six semesters) Bachelor’s Degree in Computer Application.The degree helps interested students in setting up a sound academic base for an advanced career in Computer Applications.</p>
-            </div>
-
-            <div class="course-col">
-                <h2>BSC-IT </h2>
-                <p>BSc (Bachelor of Science) in IT is basically about storing, processing, securing, and managing information. This degree is primarily focused on subjects such as software, databases, and networking. </p>
-            </div>
-
-            <div class="course-col">
-                <h2>BSC CA & IT</h2>
-                <p>The Bachelor of Science in (CS & IT) is an undergraduate degree course in computer applications for a duration of 3 years. The field relates to design, development and use of computer applications. </p>
-            </div>
-
-
+    <section>
+        <h2 class="section-title">Flagship Programs</h2>
+        <div class="grid-3">
+            <div class="card"><i class="fas fa-microchip"></i><h3>B.Tech</h3><p>CS, ECE, Mechanical, Civil, Electrical. Top placements & research.</p></div>
+            <div class="card"><i class="fas fa-flask"></i><h3>M.Tech</h3><p>Specializations in AI, VLSI, Robotics, Structural Engg.</p></div>
+            <div class="card"><i class="fas fa-chart-line"></i><h3>MBA</h3><p>Business Analytics, Finance, Marketing, Operations.</p></div>
         </div>
     </section>
 
-    <!--Campus Section-->
-
-    <section class="campus">
-        <h1> Our Campus</h1>
-        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quisquam atque non voluptate</p> -->
-
-            <div class="row">
-                <div class="campus-col">
-                    <img src="image/cm1.jfif" alt="">
-                    <div class="layer">
-                        <h3>Environment</h3>
-                    </div>
-                </div>
-
-                <div class="campus-col">
-                    <img src="image/cm2.jfif" alt="">
-                    <div class="layer">
-                        <h3>Community</h3>
-                    </div>
-                </div>
-
-                <div class="campus-col">
-                    <img src="image/cm3.jfif" alt="">
-                    <div class="layer">
-                        <h3>Education</h3>
-                    </div>
-                </div>
-            </div>
+    <section style="background: #f1f5f9;">
+        <h2 class="section-title">Our Campus</h2>
+        <div class="campus-grid">
+            <div class="campus-item"><img src="image/cm1.jfif" alt="Campus"><div class="overlay">Green Environment</div></div>
+            <div class="campus-item"><img src="image/cm2.jfif" alt="Community"><div class="overlay">Student Life</div></div>
+            <div class="campus-item"><img src="image/cm3.jfif" alt="Library"><div class="overlay">Knowledge Hub</div></div>
+        </div>
     </section>
 
-    <!--Facilities Section-->
-
-    <section class="facilities">
-        <h1> Our facilities</h1>
-        <p>Facilities provide for Students by Gokul Global University</p>
-
-        <div class="row">
-            <div class="facilities-col">
-                <img src="image/canteen.jfif" alt="">
-                <h3>Canteen</h3>
-                <p>The objective of the Canteen and meal service is to protect by reducing the risk of foodborne illness, with proper sanitary conditions.</p>
-            </div>
-
-            <div class="facilities-col">
-                <img src="image/auditorium.jfif" alt="">
-                <h3>Auditorium</h3>
-                <p>The college is having a huge indoor auditorium with a professionally-deployed acoustic system and a seating capacity of about 200 people.</p>
-            </div>
-
-            <div class="facilities-col">
-                <img src="image/hostel.jfif" alt="">
-                <h3>Hostel</h3>
-                <p>hostel consists of a separate mess, administrative office, warden quarter. In addition to well furnished rooms.</p>
-            </div>
+    <section>
+        <h2 class="section-title">World-Class Facilities</h2>
+        <div class="grid-3">
+            <div class="card"><img src="image/canteen.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:20px;"><h3>Canteen</h3><p>Multi-cuisine & hygienic food courts.</p></div>
+            <div class="card"><img src="image/audi.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:20px;"><h3>Auditorium</h3><p>State-of-the-art 1200-seater hall.</p></div>
+            <div class="card"><img src="image/hostel.jpeg" style="width:100%; height:150px; object-fit:cover; border-radius:20px;"><h3>Hostels</h3><p>Separate hostels with WiFi & security.</p></div>
         </div>
-        </section>
+    </section>
 
-        <!--Call To Action Section-->
+    <div class="footer">
+        <p>📍 Mahatma Gandhi Avenue, Durgapur - 713209, West Bengal</p>
+        <p>📞 +91-343-2752000 | ✉️ admissions@nitdgp.ac.in</p>
+        <p id="copy">© 2025 NIT Durgapur | All Rights Reserved</p>
+    </div>
 
-        <section class="ctn">
-            <h1> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h1>
-        </section>
-
-         <!--Footer-->
-         <section class="footer">
-             <h4>About Us</h4>
-            <p>The Gokul Global University at Sidhpur provide one of the earliest form of technical studies,
-                which has been vital in setting up the standard of brilliance.</p>
-             <p id="copyright">Made By &#10084; Jaydipsinh Solanki</p>
-         </section>
-
-    <!--Javascript is Start-->
-    <script src="javascript/main_script.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
+        }
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.card, .campus-item').forEach(el => { el.classList.add('fade-up'); observer.observe(el); });
+        document.getElementById('copy').innerHTML = `© ${new Date().getFullYear()} NIT Durgapur | All Rights Reserved`;
+    </script>
 </body>
-
-    
-    
 </html>

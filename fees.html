@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fee Payment - NIT Durgapur</title>
+  <link rel="shortcut icon" href="image/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #f0f4fa 0%, #e6edf4 100%);
+      min-height: 100vh;
+    }
+
+    /* Navigation Styles */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6%;
+      background: rgba(2, 35, 70, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    #logo-img {
+      width: 60px;
+      border-radius: 50%;
+      background: white;
+      padding: 4px;
+      transition: 0.2s;
+    }
+
+    .nav-links ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links ul li a {
+      text-decoration: none;
+      color: #f1f5f9;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .nav-links ul li a:hover {
+      color: #fbbf24;
+    }
+
+    .icon {
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Form Wrapper */
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem;
+    }
+
+    .r_form_wrap {
+      background: white;
+      max-width: 650px;
+      width: 100%;
+      border-radius: 48px;
+      box-shadow: 0 30px 50px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .title {
+      background: #0f2b3d;
+      padding: 1.8rem;
+      text-align: center;
+    }
+
+    #header_fees {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin: 0;
+    }
+
+    .r_form {
+      padding: 2rem 2rem 2.5rem;
+    }
+
+    .input_wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: #1e293b;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .input_item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #f8fafc;
+      border-radius: 60px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+    }
+
+    .input_item i {
+      width: 48px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #fbbf24;
+    }
+
+    .input_item select, .input_item input, .input_item p {
+      flex: 1;
+      padding: 0.9rem 1rem 0.9rem 0;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 500;
+      outline: none;
+      color: #0f172a;
+    }
+
+    .input_item p {
+      margin: 0;
+      padding-right: 1rem;
+    }
+
+    select.input, input.input {
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #uid_detail {
+      font-size: 0.75rem;
+      color: #475569;
+      margin-top: 0.3rem;
+      margin-left: 1rem;
+    }
+
+    .button {
+      background: #fbbf24;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-right: 1rem;
+      margin-top: 0.5rem;
+      color: #0f172a;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .button:hover {
+      background: #ffd966;
+      transform: translateY(-2px);
+    }
+
+    .none_div {
+      height: 2rem;
+    }
+
+    @media (max-width: 780px) {
+      .nav-links ul {
+        position: fixed;
+        top: 0;
+        right: -260px;
+        background: #0f2b3d;
+        height: 100vh;
+        width: 250px;
+        flex-direction: column;
+        padding-top: 5rem;
+        transition: 0.3s;
+        z-index: 999;
+      }
+      .nav-links ul.show {
+        right: 0;
+      }
+      .icon {
+        display: block;
+      }
+      .button {
+        width: 100%;
+        margin-bottom: 0.8rem;
+      }
+    }
+
+    .success-badge {
+      background: #dcfce7;
+      color: #15803d;
+      border-radius: 60px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+    hr {
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html"><img src="image/logo.png" id="logo-img" alt="NIT Durgapur"></a>
+    <div class="nav-links" id="navLinks">
+      <span class="icon" onclick="hideMenu()">&#10005;</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admission.html">Admission</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="fees.html" style="color:#fbbf24;">Fees</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <span class="icon" onclick="showMenu()">&#9776;</span>
+  </nav>
+
+  <div class="wrapper">
+    <div class="r_form_wrap">
+      <div class="title">
+        <p id="header_fees">💰 Fee Portal | NIT Durgapur</p>
+        <p style="color:#cbd5e1; font-size:0.8rem;">B.Tech | M.Tech | MBA</p>
+      </div>
+
+      <div class="r_form">
+        <div class="input_wrap">
+          <label>📘 Select Program (Course)</label>
+          <div class="input_item">
+            <i class="fas fa-graduation-cap"></i>
+            <select id="courseSelect" class="input" required>
+              <option value="">-- Choose Course --</option>
+              <option value="btech">B.Tech (All Branches) - 2024 Batch</option>
+              <option value="mtech">M.Tech (Specializations) - 2024 Batch</option>
+              <option value="mba">MBA (Business Admin) - 2024 Batch</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input_wrap">
+          <label>🆓 Enrollment ID / Roll Number</label>
+          <div class="input_item">
+            <i class="fas fa-id-card"></i>
+            <input type="text" class="input" id="enrollId" placeholder="e.g., NITD/BT/240101 or NITD/MT/24052" required>
+          </div>
+          <p id="uid_detail" style="font-size:0.7rem;">Enter NIT Durgapur enrollment ID ( last 2 digits for demo )</p>
+        </div>
+
+        <div class="input_wrap">
+          <input type="button" class="button" value="🔍 Fetch Details" onclick="fetchStudentDetails()">
+        </div>
+
+        <div class="input_wrap">
+          <label>👤 Student Name</label>
+          <div class="input_item">
+            <i class="fas fa-user"></i>
+            <p id="studentNameDisplay" class="input">— Not fetched —</p>
+          </div>
+        </div>
+
+        <div class="input_wrap">
+          <label>💰 Pending Fee Amount (₹ INR)</label>
+          <div class="input_item">
+            <i class="fas fa-rupee-sign"></i>
+            <p id="feeDisplay" class="input">— —</p>
+          </div>
+        </div>
+
+        <div class="input_wrap">
+          <label>💳 Payment Mode (Demo)</label>
+          <div class="input_item">
+            <i class="fas fa-credit-card"></i>
+            <select id="paymentMode" class="input">
+              <option>UPI / QR Code</option>
+              <option>Net Banking</option>
+              <option>Debit/Credit Card</option>
+              <option>NEFT/RTGS</option>
+            </select>
+          </div>
+        </div>
+
+        <hr>
+        <input type="button" class="button" value="✅ Proceed to Pay Fees" onclick="processPayment()" style="background:#1e3a5f; color:white;">
+        <input type="button" class="button" value="🔁 Reset" onclick="resetForm()" style="background:#e2e8f0;">
+
+        <div id="paymentStatus" style="margin-top: 1.5rem; text-align: center; font-weight: 500;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="none_div"></div>
+
+  <script>
+    // Updated mock student database for NIT Durgapur (B.Tech, M.Tech, MBA)
+    const studentsDB = {
+      // BTECH entries
+      "NITD/BT/24101": { name: "Aarav Sharma", course: "btech", feePending: 118000 },
+      "NITD/BT/24202": { name: "Ishita Verma", course: "btech", feePending: 118000 },
+      "NITD/BT/24303": { name: "Rohan Mehta", course: "btech", feePending: 59000 },
+      "NITD/BT/24404": { name: "Sneha Roy", course: "btech", feePending: 118000 },
+      // MTECH entries
+      "NITD/MT/24011": { name: "Aditya Singh", course: "mtech", feePending: 82000 },
+      "NITD/MT/24022": { name: "Neha Gupta", course: "mtech", feePending: 41000 },
+      "NITD/MT/24033": { name: "Kunal Das", course: "mtech", feePending: 82000 },
+      // MBA entries
+      "NITD/MBA/2401": { name: "Priyanka Patel", course: "mba", feePending: 145000 },
+      "NITD/MBA/2402": { name: "Rahul Nair", course: "mba", feePending: 72500 },
+      "NITD/MBA/2403": { name: "Swati Bansal", course: "mba", feePending: 145000 },
+    };
+
+    // Fee structures per course (Annual/Semester based)
+    const courseFeeMap = {
+      btech: { totalAnnual: 118000, message: "B.Tech remaining semester fee" },
+      mtech: { totalAnnual: 82000, message: "M.Tech pending academic fee" },
+      mba: { totalAnnual: 145000, message: "MBA tuition outstanding" }
+    };
+
+    let currentStudentData = null;
+
+    function fetchStudentDetails() {
+      const enrollId = document.getElementById("enrollId").value.trim();
+      const selectedCourse = document.getElementById("courseSelect").value;
+
+      if (!enrollId) {
+        alert("⚠️ Please enter your Enrollment ID / Roll number");
+        return;
+      }
+      if (!selectedCourse) {
+        alert("📌 Please select the course (B.Tech / M.Tech / MBA)");
+        return;
+      }
+
+      // Check in DB
+      let studentRecord = studentsDB[enrollId];
+      if (studentRecord) {
+        // verify course matches (optional extra validation)
+        if (studentRecord.course !== selectedCourse) {
+          alert(`❌ Enrollment ID belongs to ${studentRecord.course.toUpperCase()} course. Please select correct program.`);
+          document.getElementById("studentNameDisplay").innerHTML = "— Mismatch —";
+          document.getElementById("feeDisplay").innerHTML = "— —";
+          currentStudentData = null;
+          return;
+        }
+        // success
+        currentStudentData = {
+          name: studentRecord.name,
+          fee: studentRecord.feePending,
+          course: studentRecord.course,
+          enroll: enrollId
+        };
+        document.getElementById("studentNameDisplay").innerHTML = studentRecord.name;
+        document.getElementById("feeDisplay").innerHTML = `₹ ${studentRecord.feePending.toLocaleString('en-IN')}`;
+      } 
+      else {
+        // DEMO Fallback: generate a demo student based on enrollment pattern for NIT Durgapur courses
+        if (selectedCourse === "btech" && enrollId.toLowerCase().startsWith("nitd/bt/")) {
+          const demoName = "Demo Student (B.Tech)";
+          const pendingFee = 118000;
+          currentStudentData = { name: demoName, fee: pendingFee, course: "btech", enroll: enrollId };
+          document.getElementById("studentNameDisplay").innerHTML = demoName;
+          document.getElementById("feeDisplay").innerHTML = `₹ ${pendingFee.toLocaleString('en-IN')}`;
+          alert(`📢 Demo record: B.Tech student. Pending fee: ₹${pendingFee}`);
+        } 
+        else if (selectedCourse === "mtech" && enrollId.toLowerCase().startsWith("nitd/mt/")) {
+          const demoName = "Demo Student (M.Tech)";
+          const pendingFee = 82000;
+          currentStudentData = { name: demoName, fee: pendingFee, course: "mtech", enroll: enrollId };
+          document.getElementById("studentNameDisplay").innerHTML = demoName;
+          document.getElementById("feeDisplay").innerHTML = `₹ ${pendingFee.toLocaleString('en-IN')}`;
+          alert(`📢 Demo record: M.Tech student. Fee due: ₹${pendingFee}`);
+        }
+        else if (selectedCourse === "mba" && enrollId.toLowerCase().startsWith("nitd/mba/")) {
+          const demoName = "Demo Student (MBA)";
+          const pendingFee = 145000;
+          currentStudentData = { name: demoName, fee: pendingFee, course: "mba", enroll: enrollId };
+          document.getElementById("studentNameDisplay").innerHTML = demoName;
+          document.getElementById("feeDisplay").innerHTML = `₹ ${pendingFee.toLocaleString('en-IN')}`;
+          alert(`📢 Demo record: MBA candidate. Pending tuition: ₹${pendingFee}`);
+        }
+        else {
+          alert(`❌ Enrollment ID not found for NIT Durgapur. \n\nValid formats: \nB.Tech: NITD/BT/24101 \nM.Tech: NITD/MT/24011 \nMBA: NITD/MBA/2401`);
+          document.getElementById("studentNameDisplay").innerHTML = "— Not found —";
+          document.getElementById("feeDisplay").innerHTML = "— —";
+          currentStudentData = null;
+          return;
+        }
+      }
+
+      // Show green hint if fee exists
+      if(currentStudentData && currentStudentData.fee > 0){
+        let feeDiv = document.getElementById("feeDisplay");
+        feeDiv.style.color = "#b45309";
+        feeDiv.style.fontWeight = "bold";
+      }
+    }
+
+    function processPayment() {
+      if (!currentStudentData) {
+        alert("⚠️ Please fetch your student details first using 'Fetch Details' button.");
+        return;
+      }
+      
+      const paymentMode = document.getElementById("paymentMode").value;
+      const selectedCourseOption = document.getElementById("courseSelect").value;
+      let courseName = "";
+      if (selectedCourseOption === "btech") courseName = "B.Tech";
+      else if (selectedCourseOption === "mtech") courseName = "M.Tech";
+      else if (selectedCourseOption === "mba") courseName = "MBA";
+      
+      // Confirm payment
+      const confirmPay = confirm(`🎓 NIT Durgapur Fee Payment\n\nStudent: ${currentStudentData.name}\nCourse: ${courseName}\nAmount: ₹ ${currentStudentData.fee.toLocaleString('en-IN')}\nMode: ${paymentMode}\n\nProceed to payment gateway?`);
+      
+      if (confirmPay) {
+        // Simulate payment success / email receipt
+        const transactionId = "NITD" + Math.floor(Math.random() * 1000000000);
+        document.getElementById("paymentStatus").innerHTML = `
+          <div style="background:#e6f7e6; padding:1rem; border-radius: 28px; margin-top:10px;">
+            <i class="fas fa-check-circle" style="color:#2b7e3a; font-size:1.8rem;"></i>
+            <p style="font-weight:bold; margin-top:5px;">✅ Payment Successful!</p>
+            <p>Transaction ID: ${transactionId}</p>
+            <p>Receipt sent to registered email ID.</p>
+            <small>NIT Durgapur - Fee Section</small>
+          </div>
+        `;
+        // Reset pending fee display to zero after success (simulate cleared)
+        if (currentStudentData) {
+          currentStudentData.fee = 0;
+          document.getElementById("feeDisplay").innerHTML = `₹ 0 (Cleared)`;
+          document.getElementById("feeDisplay").style.color = "green";
+        }
+        // optional email simulation alert
+        alert(`📧 Payment receipt sent to ${currentStudentData.name}@students.nitdgp.ac.in\nThank you for paying fees to NIT Durgapur.`);
+      } else {
+        document.getElementById("paymentStatus").innerHTML = `<span style="color:#b91c1c;">❌ Payment cancelled.</span>`;
+        setTimeout(() => { document.getElementById("paymentStatus").innerHTML = ""; }, 2000);
+      }
+    }
+
+    function resetForm() {
+      document.getElementById("courseSelect").value = "";
+      document.getElementById("enrollId").value = "";
+      document.getElementById("studentNameDisplay").innerHTML = "— Not fetched —";
+      document.getElementById("feeDisplay").innerHTML = "— —";
+      document.getElementById("paymentMode").selectedIndex = 0;
+      document.getElementById("paymentStatus").innerHTML = "";
+      currentStudentData = null;
+    }
+
+    // mobile menu functions
+    function showMenu() {
+      document.getElementById("navLinks").classList.add("show");
+    }
+    function hideMenu() {
+      document.getElementById("navLinks").classList.remove("show");
+    }
+
+    // link close on click
+    document.querySelectorAll('.nav-links ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById("navLinks").classList.remove("show");
+      });
+    });
+  </script>
+</body>
+</html>
